@@ -1,3 +1,5 @@
+package Cognizant_DN.DeepSkilling.Week1.EngineeringConcepts.DesignPatternsAndPrinciples.Exercise1_SingletonPattern;
+
 public class Printer {
 
     private static Printer instance;
