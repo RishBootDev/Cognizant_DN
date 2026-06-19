@@ -1,3 +1,5 @@
+package Cognizant_DN.DeepSkilling.Week1.EngineeringConcepts.DataStructuresAndAlgorithms.Exercise7;
+
 public class FinancialForecasting {
 
     public static double futureValue(double currentValue, double growthRate, int years) {

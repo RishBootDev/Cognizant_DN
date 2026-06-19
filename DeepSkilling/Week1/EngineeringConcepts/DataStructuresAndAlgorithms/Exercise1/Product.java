@@ -1,3 +1,5 @@
+package Cognizant_DN.DeepSkilling.Week1.EngineeringConcepts.DataStructuresAndAlgorithms.Exercise1;
+
 public class Product {
     private int productId;
     private String productName;
