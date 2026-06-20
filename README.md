@@ -6,7 +6,7 @@ This repository contains my weekly assignment and exercise solutions as part of 
 
 Each folder contains the structured solution code along with a detailed breakdown of the weekly curriculum:
 
-* [Week 1](./Week_1/) — Design Patterns, DSA, Advanced SQL, Logging and Testing
+* [Week 1](./DeepSkilling/Week1/) — Design Patterns, DSA, Advanced SQL, Logging and Testing
 * [Week 2](./Week_2/) — Spring Core, Maven, Spring Data JPA, Hibernate
 * [Week 3](./Week_3/) — Spring REST using Spring Boot 3
 * [Week 4](./Week_4/) — Code Quality (SonarQube), Microservices, Spring Cloud
