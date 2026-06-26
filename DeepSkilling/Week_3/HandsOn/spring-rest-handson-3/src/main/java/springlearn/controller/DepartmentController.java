@@ -24,4 +24,5 @@ public class DepartmentController {
         log.info("END");
         return departments;
     }
+
 }
