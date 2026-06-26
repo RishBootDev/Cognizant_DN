@@ -1,353 +1,269 @@
-# JWT Authentication Hands-on
+# Spring REST Hands-on 4
 
 Completed by: Rishabh Dubey
 
-# Exercise 1 – Securing RESTful Web Services
+## Project Details
 
-Added Spring Security dependency and secured all REST endpoints.
+- Application name: `spring-rest-handson-4`
+- Package name: `com.cognizant.springlearn`
 
-### Test Command
+## Hands-on Covered
 
-```bash
-curl -s http://localhost:8090/countries
+### 1. HTTP Method Types
+
+Implemented REST methods according to standard REST usage:
+
+| Method | Purpose |
+|---|---|
+| GET | Fetch resource data |
+| POST | Create resource data |
+| PUT | Update resource data |
+| DELETE | Delete resource data |
+
+### 2. RESTful URL Naming Guidelines
+
+Country APIs use resource-based naming with class-level mapping:
+
+```java
+@RequestMapping("/countries")
 ```
 
-### Expected Response (As specified in the Hands-on)
+Employee APIs use:
 
-```json
-{
-  "timestamp":"2019-10-05T09:24:33.794+0000",
-  "status":401,
-  "error":"Unauthorized",
-  "message":"Unauthorized",
-  "path":"/countries"
-}
+```java
+@RequestMapping("/employees")
 ```
 
-### Screenshot
+Department APIs use:
 
-[View Screenshot](screenshots/01-unauthorized-response.png)
-
----
-
-# Exercise 2 – Access Using Generated Password
-
-Executed:
-
-```bash
-curl -s -v -u user:<generated-password> http://localhost:8090/countries
+```java
+@RequestMapping("/departments")
 ```
 
-Verified:
+### 3. Country POST Service
 
-* Countries are returned successfully.
-* Authorization header contains Base64 encoded credentials.
-
-### Screenshots
-
-* [Generated Password](screenshots/02-generated-password.png)
-* [Basic Authentication Success](screenshots/03-basic-auth-success.png)
-
----
-
-# Exercise 3 – Creating Users and Roles
-
-Configured two in-memory users.
-
-| Username | Password | Role  |
-| -------- | -------- | ----- |
-| admin    | pwd      | ADMIN |
-| user     | pwd      | USER  |
-
-Configured `/countries` to be accessible only by **USER** role.
-
----
-
-## Correct Credentials
-
-```bash
-curl -s -u user:pwd http://localhost:8090/countries
-```
-
-### Screenshot
-
-[View Screenshot](screenshots/04-user-role-success.png)
-
----
-
-## Incorrect Password
-
-```bash
-curl -s -u user:pwd1 http://localhost:8090/countries
-```
-
-### Expected Response (As specified in the Hands-on)
-
-```json
-{
-  "timestamp":"2019-10-05T10:19:08.237+0000",
-  "status":401,
-  "error":"Unauthorized",
-  "message":"Unauthorized",
-  "path":"/countries"
-}
-```
-
-### Screenshot
-
-[View Screenshot](screenshots/05-invalid-password.png)
-
----
-
-## Correct Credentials but Wrong Role
-
-```bash
-curl -s -u admin:pwd http://localhost:8090/countries
-```
-
-### Expected Response (As specified in the Hands-on)
-
-```json
-{
-  "timestamp":"2019-10-05T10:22:38.015+0000",
-  "status":403,
-  "error":"Forbidden",
-  "message":"Forbidden",
-  "path":"/countries"
-}
-```
-
-### Screenshot
-
-[View Screenshot](screenshots/06-admin-forbidden.png)
-
----
-
-# Exercise 4 – Base64 Authorization Header
-
-Verified that the Authorization header contains Base64 encoded credentials.
-
-Decoded using:
-
-https://www.base64decode.net/
-
-### Screenshot
-
-[View Screenshot](screenshots/07-base64-decode.png)
-
----
-
-# Exercise 5 – Understanding JWT
-
-Verified JWT structure using:
-
-* https://jwt.io/
-* Wikipedia JWT Structure
-
-Verified the generated token contains:
-
-* Header
-* Payload
-* Signature
-
-### Screenshot
-
-[View Screenshot](screenshots/08-jwt-structure.png)
-
----
-
-# Exercise 6 – Authentication Service
-
-Implemented:
+Implemented POST API for creating a country.
 
 ```http
-GET /authenticate
+POST http://localhost:8090/countries
 ```
 
-### Test Command
-
-```bash
-curl -s -u user:pwd http://localhost:8090/authenticate
-```
-
-### Expected Response (As specified in the Hands-on)
+Sample JSON:
 
 ```json
 {
-  "token":"<generated-jwt-token>"
+  "code": "IN",
+  "name": "India"
 }
 ```
 
-### Screenshots
+Expected response:
 
-* [Authenticate API](screenshots/09-authenticate-api.png)
-* [Generated JWT Token](screenshots/10-generated-token.png)
-
----
-
-# Exercise 7 – Authorization Header Logging
-
-Verified that the Authorization header starts with:
-
-```
-Basic
+```json
+{
+  "code": "IN",
+  "name": "India"
+}
 ```
 
-and contains Base64 encoded credentials.
+### 4. JSON to Bean Mapping
 
-### Screenshot
+Used `@RequestBody` to map JSON request data into the `Country` bean.
 
-[View Screenshot](screenshots/11-authorization-header-log.png)
+```java
+public Country addCountry(@RequestBody @Valid Country country)
+```
 
----
+### 5. Country Validation
 
-# Exercise 8 – JWT Generation
+Added validation on country code:
 
-Generated JWT using JJWT.
+```java
+@NotNull
+@Size(min = 2, max = 2, message = "Country code should be 2 characters")
+private String code;
+```
 
-Verified:
+Invalid request:
 
-* Subject
-* Issued Time
-* Expiration Time
-* Signature
+```json
+{
+  "code": "I",
+  "name": "India"
+}
+```
 
-### Screenshot
+Expected response status:
 
-[View Screenshot](screenshots/12-jwt-generated.png)
+```http
+400 Bad Request
+```
 
----
+### 6. Global Exception Handler
 
-# Exercise 9 – JWT Authorization Filter
+Created `GlobalExceptionHandler` using:
 
-Implemented:
+```java
+@ControllerAdvice
+```
 
-* JwtAuthorizationFilter
-* Bearer Token Validation
-* SecurityContext Authentication
+Handled validation errors globally using `handleMethodArgumentNotValid()`.
 
-### Screenshot
+Handled incorrect numeric format errors using `handleHttpMessageNotReadable()`.
 
-[View Screenshot](screenshots/13-jwt-filter.png)
+### 7. Employee Update Service
 
----
+Implemented PUT API for updating employee data.
 
-# Exercise 10 – Access Protected API using JWT
+```http
+PUT http://localhost:8090/employees
+```
 
-Generate token:
+Sample JSON:
+
+```json
+{
+  "id": 1,
+  "name": "Rishabh Dubey Updated",
+  "salary": 90000,
+  "permanent": true,
+  "dateOfBirth": "14/07/2004",
+  "department": {
+    "id": 1,
+    "name": "Engineering"
+  },
+  "skillList": [
+    {
+      "id": 1,
+      "name": "Java"
+    },
+    {
+      "id": 3,
+      "name": "SQL"
+    }
+  ]
+}
+```
+
+Expected response:
+
+```http
+200 OK
+```
+
+Verify update:
+
+```http
+GET http://localhost:8090/employees
+```
+
+### 8. Employee Delete Service
+
+Implemented DELETE API for deleting employee by id.
+
+```http
+DELETE http://localhost:8090/employees/1
+```
+
+Expected response:
+
+```http
+200 OK
+```
+
+Verify deletion:
+
+```http
+GET http://localhost:8090/employees
+```
+
+### 9. Employee Not Found Exception
+
+Created `EmployeeNotFoundException` with:
+
+```java
+@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Employee not found")
+```
+
+Invalid update/delete returns:
+
+```http
+404 Not Found
+```
+
+### 10. MockMvc Tests
+
+Created MockMvc tests for:
+
+- Application context loading
+- Country validation error
+- Employee update exceptional scenario
+- Employee delete exceptional scenario
+
+Run tests:
 
 ```bash
-curl -s -u user:pwd http://localhost:8090/authenticate
+mvn clean test
 ```
 
-Invoke protected API:
+## Postman URLs
 
-```bash
-curl -s -H "Authorization: Bearer REPLACE_TOKEN_HERE" http://localhost:8090/countries
-```
-
-Verified that the countries are returned successfully.
-
-### Screenshot
-
-[View Screenshot](screenshots/14-jwt-protected-api.png)
-
----
-
-# Exercise 11 – Invalid JWT
-
-Modified the generated JWT token.
-
-Executed:
-
-```bash
-curl -s -H "Authorization: Bearer INVALID_TOKEN" http://localhost:8090/countries
-```
-
-Verified Unauthorized response.
-
-### Screenshot
-
-[View Screenshot](screenshots/15-invalid-jwt.png)
-
----
-
-# Important APIs
-
-## Get Countries
+### Country APIs
 
 ```http
 GET http://localhost:8090/countries
 ```
 
-## Authenticate User
+```http
+GET http://localhost:8090/countries/IN
+```
 
 ```http
-GET http://localhost:8090/authenticate
+POST http://localhost:8090/countries
 ```
 
----
+### Employee APIs
 
-# Postman Testing
-
-## 1. Basic Authentication
-
-```
-GET http://localhost:8090/countries
+```http
+GET http://localhost:8090/employees
 ```
 
-Username
-
-```
-user
+```http
+PUT http://localhost:8090/employees
 ```
 
-Password
-
-```
-pwd
+```http
+DELETE http://localhost:8090/employees/1
 ```
 
-Screenshot
+### Department API
 
-[View Screenshot](screenshots/16-postman-basic-auth.png)
-
----
-
-## 2. Authenticate API
-
-```
-GET http://localhost:8090/authenticate
+```http
+GET http://localhost:8090/departments
 ```
 
-Authorization
+## Curl Commands
 
-```
-Basic Authentication
+### POST Country
 
-Username : user
-Password : pwd
-```
-
-Screenshot
-
-[View Screenshot](screenshots/17-postman-authenticate.png)
-
----
-
-## 3. JWT Authorization
-
-```
-GET http://localhost:8090/countries
+```bash
+curl -i -H "Content-Type: application/json" -X POST -s -d '{"code":"IN","name":"India"}' http://localhost:8090/countries
 ```
 
-Header
+### POST Country Validation Error
 
+```bash
+curl -i -H "Content-Type: application/json" -X POST -s -d '{"code":"I","name":"India"}' http://localhost:8090/countries
 ```
-Authorization: Bearer <JWT_TOKEN>
+
+### PUT Employee
+
+```bash
+curl -i -H "Content-Type: application/json" -X PUT -s -d '{"id":1,"name":"Rishabh Dubey Updated","salary":90000,"permanent":true,"dateOfBirth":"14/07/2004","department":{"id":1,"name":"Engineering"},"skillList":[{"id":1,"name":"Java"}]}' http://localhost:8090/employees
 ```
 
-Screenshot
+### DELETE Employee
 
-[View Screenshot](screenshots/18-postman-bearer-token.png)
-
+```bash
+curl -i -X DELETE -s http://localhost:8090/employees/1
+```

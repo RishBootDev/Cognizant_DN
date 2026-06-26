@@ -1,16 +1,20 @@
 # Spring REST Hands-on 3
 
-Completed by: Rishabh Dubey
+**Completed by:** Rishabh Dubey
 
-Application name: **spring-rest-handson-3**
+**Application name:** `spring-rest-handson-3`
 
-Package name: **springlearn**
+**Package name:** `springlearn`
 
-## Objective
+---
 
-This project demonstrates integration of RESTful Web Services of type GET and testing the services using Postman. It follows Controller, Service and DAO architecture.
+# Objective
 
-## Hands-on 3 Implementation
+This project demonstrates integration of RESTful Web Services of type GET and testing the services using Postman. It follows the Controller → Service → DAO architecture.
+
+---
+
+# Hands-on 3 Implementation
 
 ## 1. Static Employee List Using Spring XML
 
@@ -18,11 +22,13 @@ I created `employee.xml` inside `src/main/resources`.
 
 The XML contains:
 
-- Departments
-- Skills
-- Four employee objects
-- `employeeList` as `ArrayList<Employee>`
-- `departmentList` as `ArrayList<Department>`
+* Departments
+* Skills
+* Four Employee objects
+* `employeeList` as `ArrayList<Employee>`
+* `departmentList` as `ArrayList<Department>`
+
+---
 
 ## 2. Employee DAO
 
@@ -30,9 +36,11 @@ I created `EmployeeDao`.
 
 It contains:
 
-- Static variable `EMPLOYEE_LIST`
-- Constructor to load `employeeList` from XML configuration
-- `getAllEmployees()` method to return the employee list
+* Static variable `EMPLOYEE_LIST`
+* Constructor to load `employeeList` from XML configuration
+* `getAllEmployees()` method to return the employee list
+
+---
 
 ## 3. Employee Service
 
@@ -40,29 +48,31 @@ I created `EmployeeService`.
 
 It contains:
 
-- `@Service`
-- Lombok `@RequiredArgsConstructor`
-- Lombok `@Slf4j`
-- `getAllEmployees()` method
-- `@Transactional(readOnly = true)`
+* `@Service`
+* Lombok `@RequiredArgsConstructor`
+* Lombok `@Slf4j`
+* `getAllEmployees()` method
+* `@Transactional(readOnly = true)`
+
+---
 
 ## 4. Employee REST Controller
 
 I created `EmployeeController`.
 
-Endpoint:
+### Endpoint
 
 ```http
 GET /employees
 ```
 
-Sample URL:
+### Sample URL
 
 ```text
 http://localhost:8083/employees
 ```
 
-Sample Response:
+### Sample Response
 
 ```json
 [
@@ -89,27 +99,33 @@ Sample Response:
 ]
 ```
 
+### Postman Output
+
+[View Screenshot](DeepSkilling/Week_3/postman_output/handson_3_1.png)
+
+---
+
 ## 5. Department REST Service
 
 I created:
 
-- `DepartmentDao`
-- `DepartmentService`
-- `DepartmentController`
+* `DepartmentDao`
+* `DepartmentService`
+* `DepartmentController`
 
-Endpoint:
+### Endpoint
 
 ```http
 GET /departments
 ```
 
-Sample URL:
+### Sample URL
 
 ```text
 http://localhost:8083/departments
 ```
 
-Sample Response:
+### Sample Response
 
 ```json
 [
@@ -128,19 +144,27 @@ Sample Response:
 ]
 ```
 
+### Postman Output
+
+[View Screenshot](DeepSkilling/Week_3/postman_output/handson_3_2.png)
+
+---
+
 ## 6. Builder Pattern Usage
 
 The model classes use Lombok `@Builder`.
 
-Classes using builder pattern:
+Classes using the Builder pattern:
 
-- `Employee`
-- `Department`
-- `Skill`
+* Employee
+* Department
+* Skill
+
+---
 
 ## 7. Logging
 
-All major layers use Lombok SLF4J logger:
+All major layers use Lombok SLF4J logger.
 
 ```java
 @Slf4j
@@ -148,10 +172,12 @@ All major layers use Lombok SLF4J logger:
 
 Logging has been added in:
 
-- Main application
-- Controller layer
-- Service layer
-- DAO layer
+* Main application
+* Controller layer
+* Service layer
+* DAO layer
+
+---
 
 ## 8. Run the Application
 
@@ -159,23 +185,39 @@ Logging has been added in:
 mvn spring-boot:run
 ```
 
-Or run this class in IntelliJ IDEA:
+Or run the following class in IntelliJ IDEA:
 
 ```text
 SpringRestHandson3Application
 ```
 
+---
+
 ## 9. Test Using Postman
 
-Use these GET requests:
+### Get All Employees
 
 ```text
-http://localhost:8083/employees
+GET http://localhost:8083/employees
 ```
 
+**Postman Output**
+
+[View Screenshot](DeepSkilling/Week_3/postman_output/handson_3_1.png)
+
+---
+
+### Get All Departments
+
 ```text
-http://localhost:8083/departments
+GET http://localhost:8083/departments
 ```
+
+**Postman Output**
+
+[View Screenshot](DeepSkilling/Week_3/postman_output/handson_3_2.png)
+
+---
 
 ## 10. Run Tests
 
@@ -185,6 +227,6 @@ mvn test
 
 MockMvc tests are included for:
 
-- Application context loading
-- `/employees`
-- `/departments`
+* Application context loading
+* `/employees`
+* `/departments`
