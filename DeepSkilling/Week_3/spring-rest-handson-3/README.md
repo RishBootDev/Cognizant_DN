@@ -101,7 +101,7 @@ http://localhost:8083/employees
 
 ### Postman Output
 
-[View Screenshot](DeepSkilling/Week_3/postman_output/handson_3_1.png)
+[View Screenshot](Cognizant_DN\DeepSkilling\Week_3\postman_output)
 
 ---
 
