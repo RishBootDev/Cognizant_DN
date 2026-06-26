@@ -38,7 +38,7 @@
         <property name="name" value="Rishabh Dubey"/>
         <property name="salary" value="75000"/>
         <property name="permanent" value="true"/>
-        <property name="dateOfBirth" value="14/01/2004"/>
+        <property name="dateOfBirth" value="14/07/2004"/>
         <property name="department" ref="engineering"/>
         <property name="skillList">
             <list>
