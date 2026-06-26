@@ -101,7 +101,7 @@ http://localhost:8083/employees
 
 ### Postman Output
 
-[View Screenshot](./DeepSkilling/Week_3/postman_output/handson_3_2.png)
+![Employees API](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_3_1.png)
 
 ---
 
@@ -146,7 +146,7 @@ http://localhost:8083/departments
 
 ### Postman Output
 
-[View Screenshot](./DeepSkilling/Week_3/postman_output/handson_3_2.png)
+![Departments API](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_3_2.png)
 
 ---
 
@@ -203,7 +203,7 @@ GET http://localhost:8083/employees
 
 **Postman Output**
 
-[View Screenshot](DeepSkilling/Week_3/postman_output/handson_3_1.png)
+![Employees API](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_3_1.png)
 
 ---
 
@@ -215,7 +215,7 @@ GET http://localhost:8083/departments
 
 **Postman Output**
 
-[View Screenshot](DeepSkilling/Week_3/postman_output/handson_3_2.png)
+![Departments API](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_3_2.png)
 
 ---
 
