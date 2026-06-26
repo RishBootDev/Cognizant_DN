@@ -101,7 +101,7 @@ http://localhost:8083/employees
 
 ### Postman Output
 
-[View Screenshot](Cognizant_DN\DeepSkilling\Week_3\postman_output)
+[View Screenshot](./DeepSkilling/Week_3/postman_output/handson_3_2.png)
 
 ---
 
@@ -146,7 +146,7 @@ http://localhost:8083/departments
 
 ### Postman Output
 
-[View Screenshot](DeepSkilling/Week_3/postman_output/handson_3_2.png)
+[View Screenshot](./DeepSkilling/Week_3/postman_output/handson_3_2.png)
 
 ---
 
