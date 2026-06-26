@@ -20,7 +20,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     List<Employee> findBySalaryGreaterThan(Double salary);
     List<Employee> findByPermanentTrue();
     List<Employee> findByDepartmentName(String departmentName, Sort sort);
+
     Page<Employee> findByNameContainingIgnoreCase(String name, Pageable pageable);
+    
     List<Employee> findPermanentEmployees();
     List<Employee> findBySalaryGreaterThanNamed(@Param("salary") Double salary);
 
