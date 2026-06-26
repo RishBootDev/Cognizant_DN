@@ -1,28 +1,34 @@
 # Spring REST Hands-on 4
 
-Completed by: Rishabh Dubey
+**Completed by:** Rishabh Dubey
 
-## Project Details
+---
 
-- Application name: `spring-rest-handson-4`
-- Package name: `com.cognizant.springlearn`
+# Project Details
 
-## Hands-on Covered
+* **Application Name:** `spring-rest-handson-4`
+* **Package Name:** `com.cognizant.springlearn`
 
-### 1. HTTP Method Types
+---
 
-Implemented REST methods according to standard REST usage:
+# Hands-on Covered
 
-| Method | Purpose |
-|---|---|
-| GET | Fetch resource data |
-| POST | Create resource data |
-| PUT | Update resource data |
+## 1. HTTP Method Types
+
+Implemented REST methods according to standard REST usage.
+
+| Method | Purpose              |
+| ------ | -------------------- |
+| GET    | Fetch resource data  |
+| POST   | Create resource data |
+| PUT    | Update resource data |
 | DELETE | Delete resource data |
 
-### 2. RESTful URL Naming Guidelines
+---
 
-Country APIs use resource-based naming with class-level mapping:
+## 2. RESTful URL Naming Guidelines
+
+Country APIs use resource-based naming:
 
 ```java
 @RequestMapping("/countries")
@@ -40,15 +46,19 @@ Department APIs use:
 @RequestMapping("/departments")
 ```
 
-### 3. Country POST Service
+---
+
+# 3. Country POST Service
 
 Implemented POST API for creating a country.
+
+### Endpoint
 
 ```http
 POST http://localhost:8090/countries
 ```
 
-Sample JSON:
+### Request Body
 
 ```json
 {
@@ -57,7 +67,7 @@ Sample JSON:
 }
 ```
 
-Expected response:
+### Expected Response
 
 ```json
 {
@@ -66,7 +76,13 @@ Expected response:
 }
 ```
 
-### 4. JSON to Bean Mapping
+### Postman Output
+
+![Add Country](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_3.png)
+
+---
+
+# 4. JSON to Bean Mapping
 
 Used `@RequestBody` to map JSON request data into the `Country` bean.
 
@@ -74,9 +90,11 @@ Used `@RequestBody` to map JSON request data into the `Country` bean.
 public Country addCountry(@RequestBody @Valid Country country)
 ```
 
-### 5. Country Validation
+---
 
-Added validation on country code:
+# 5. Country Validation
+
+Validation added:
 
 ```java
 @NotNull
@@ -84,7 +102,7 @@ Added validation on country code:
 private String code;
 ```
 
-Invalid request:
+### Invalid Request
 
 ```json
 {
@@ -93,33 +111,45 @@ Invalid request:
 }
 ```
 
-Expected response status:
+### Expected Response
 
 ```http
 400 Bad Request
 ```
 
-### 6. Global Exception Handler
+### Postman Output
 
-Created `GlobalExceptionHandler` using:
+![Country Validation](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_4.png)
+
+---
+
+# 6. Global Exception Handler
+
+Created global exception handler using:
 
 ```java
 @ControllerAdvice
 ```
 
-Handled validation errors globally using `handleMethodArgumentNotValid()`.
+Handled:
 
-Handled incorrect numeric format errors using `handleHttpMessageNotReadable()`.
+* Validation Exceptions
+* Invalid Request Body
+* Employee Not Found Exception
 
-### 7. Employee Update Service
+---
 
-Implemented PUT API for updating employee data.
+# 7. Employee Update Service
+
+Implemented PUT API.
+
+### Endpoint
 
 ```http
 PUT http://localhost:8090/employees
 ```
 
-Sample JSON:
+### Request Body
 
 ```json
 {
@@ -145,125 +175,307 @@ Sample JSON:
 }
 ```
 
-Expected response:
+### Expected Response
 
 ```http
 200 OK
 ```
 
-Verify update:
+### Postman Output
+
+![Update Employee](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_6.png)
+
+---
+
+## Verify Employee Update
 
 ```http
 GET http://localhost:8090/employees
 ```
 
-### 8. Employee Delete Service
+### Postman Output
 
-Implemented DELETE API for deleting employee by id.
+![Updated Employees](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_7.png)
+
+---
+
+# 8. Employee Delete Service
+
+Implemented DELETE API.
+
+### Endpoint
 
 ```http
 DELETE http://localhost:8090/employees/1
 ```
 
-Expected response:
+### Expected Response
 
 ```http
 200 OK
 ```
 
-Verify deletion:
+### Postman Output
+
+![Delete Employee](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_9.png)
+
+---
+
+## Verify Employee Delete
 
 ```http
 GET http://localhost:8090/employees
 ```
 
-### 9. Employee Not Found Exception
+### Postman Output
 
-Created `EmployeeNotFoundException` with:
+![Employees After Delete](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_10.png)
+
+---
+
+# 9. Employee Not Found Exception
+
+Created:
 
 ```java
 @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Employee not found")
 ```
 
-Invalid update/delete returns:
-
-```http
-404 Not Found
-```
-
-### 10. MockMvc Tests
-
-Created MockMvc tests for:
-
-- Application context loading
-- Country validation error
-- Employee update exceptional scenario
-- Employee delete exceptional scenario
-
-Run tests:
-
-```bash
-mvn clean test
-```
-
-## Postman URLs
-
-### Country APIs
-
-```http
-GET http://localhost:8090/countries
-```
-
-```http
-GET http://localhost:8090/countries/IN
-```
-
-```http
-POST http://localhost:8090/countries
-```
-
-### Employee APIs
-
-```http
-GET http://localhost:8090/employees
-```
+### Invalid Update
 
 ```http
 PUT http://localhost:8090/employees
 ```
 
+### Expected Response
+
+```http
+404 Not Found
+```
+
+### Postman Output
+
+![Employee Update Exception](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_8.png)
+
+---
+
+### Invalid Delete
+
+```http
+DELETE http://localhost:8090/employees/999
+```
+
+### Expected Response
+
+```http
+404 Not Found
+```
+
+### Postman Output
+
+![Employee Delete Exception](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_11.png)
+
+---
+
+# 10. MockMvc Tests
+
+Created MockMvc tests for:
+
+* Application Context Loading
+* Country Validation
+* Employee Update Exceptional Scenario
+* Employee Delete Exceptional Scenario
+
+Run tests using:
+
+```bash
+mvn clean test
+```
+
+---
+
+# Postman URLs
+
+## Country APIs
+
+### Get All Countries
+
+```http
+GET http://localhost:8090/countries
+```
+
+![Get Countries](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_1.png)
+
+---
+
+### Get Country By Code
+
+```http
+GET http://localhost:8090/countries/IN
+```
+
+![Get Country By Code](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_2.png)
+
+---
+
+### Add Country
+
+```http
+POST http://localhost:8090/countries
+```
+
+```json
+{
+  "code": "IN",
+  "name": "India"
+}
+```
+
+![Add Country](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_3.png)
+
+---
+
+### Country Validation
+
+```http
+POST http://localhost:8090/countries
+```
+
+```json
+{
+  "code": "I",
+  "name": "India"
+}
+```
+
+![Country Validation](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_4.png)
+
+---
+
+## Employee APIs
+
+### Get All Employees
+
+```http
+GET http://localhost:8090/employees
+```
+
+![Employees](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_5.png)
+
+---
+
+### Update Employee
+
+```http
+PUT http://localhost:8090/employees
+```
+
+```json
+{
+  "id": 1,
+  "name": "Rishabh Dubey Updated",
+  "salary": 90000,
+  "permanent": true,
+  "dateOfBirth": "14/07/2004",
+  "department": {
+    "id": 1,
+    "name": "Engineering"
+  },
+  "skillList": [
+    {
+      "id": 1,
+      "name": "Java"
+    },
+    {
+      "id": 3,
+      "name": "SQL"
+    }
+  ]
+}
+```
+
+![Update Employee](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_6.png)
+
+---
+
+### Verify Employee Update
+
+```http
+GET http://localhost:8090/employees
+```
+
+![Updated Employees](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_7.png)
+
+---
+
+### Update Employee Exception
+
+```http
+PUT http://localhost:8090/employees
+```
+
+```json
+{
+  "id": 999,
+  "name": "Unknown",
+  "salary": 50000,
+  "permanent": true,
+  "dateOfBirth": "14/07/2004",
+  "department": {
+    "id": 1,
+    "name": "Engineering"
+  },
+  "skillList": [
+    {
+      "id": 1,
+      "name": "Java"
+    }
+  ]
+}
+```
+
+![Employee Update Exception](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_8.png)
+
+---
+
+### Delete Employee
+
 ```http
 DELETE http://localhost:8090/employees/1
 ```
 
-### Department API
+![Delete Employee](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_9.png)
+
+---
+
+### Verify Employee Delete
+
+```http
+GET http://localhost:8090/employees
+```
+
+![Employees After Delete](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_10.png)
+
+---
+
+### Delete Employee Exception
+
+```http
+DELETE http://localhost:8090/employees/999
+```
+
+![Delete Employee Exception](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_11.png)
+
+---
+
+## Department API
+
+### Get All Departments
 
 ```http
 GET http://localhost:8090/departments
 ```
 
-## Curl Commands
+![Departments](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_4_12.png)
 
-### POST Country
-
-```bash
-curl -i -H "Content-Type: application/json" -X POST -s -d '{"code":"IN","name":"India"}' http://localhost:8090/countries
-```
-
-### POST Country Validation Error
-
-```bash
-curl -i -H "Content-Type: application/json" -X POST -s -d '{"code":"I","name":"India"}' http://localhost:8090/countries
-```
-
-### PUT Employee
-
-```bash
-curl -i -H "Content-Type: application/json" -X PUT -s -d '{"id":1,"name":"Rishabh Dubey Updated","salary":90000,"permanent":true,"dateOfBirth":"14/07/2004","department":{"id":1,"name":"Engineering"},"skillList":[{"id":1,"name":"Java"}]}' http://localhost:8090/employees
-```
-
-### DELETE Employee
-
-```bash
-curl -i -X DELETE -s http://localhost:8090/employees/1
-```
+---
