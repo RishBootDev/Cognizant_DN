@@ -8,7 +8,7 @@ This Spring Boot 3 application contains all hands-on-1 exercises from the Spring
 ```text
 Group Id: com.cognizant
 Artifact Id: spring-rest-handson-1
-Main Class: com.cognizant.springlearn.SpringLearnApplication
+Main Class: com.cognizant.com.cognizant.springlearn.SpringLearnApplication
 ```
 
 ## Hands-on Covered

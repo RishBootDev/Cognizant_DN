@@ -36,7 +36,7 @@ Hello World!!
 Class used:
 
 ```text
-springlearn.controller.HelloController
+controller.com.cognizant.springlearn.HelloController
 ```
 
 Method used:
