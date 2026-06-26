@@ -1,61 +1,89 @@
 # Spring REST Hands-on 2
 
-Completed by Rishabh Dubey.
+**Completed by:** Rishabh Dubey
 
-## Hands-on Objectives Completed
+---
+
+# Hands-on Objectives Completed
 
 This application demonstrates HTTP request-response basics, RESTful web service development using Spring Boot, XML bean loading, path variable handling, exception handling, and MockMvc testing.
 
-## Hands-on 1: HTTP Request and Response
+---
 
-I studied the HTTP request and response format. A request contains method, resource path, HTTP version, headers, and optional body. A response contains HTTP version, status code, response message, headers, and response body.
+# Hands-on 1: HTTP Request and Response
+
+I studied the HTTP request and response format.
+
+A request contains:
+
+* HTTP Method
+* Resource Path
+* HTTP Version
+* Headers
+* Optional Request Body
+
+A response contains:
+
+* HTTP Version
+* Status Code
+* Response Message
+* Headers
+* Response Body
 
 Important examples:
 
-- Request Method: `GET`
-- Resource URL: `/hello`
-- Content Type: `application/json`, `text/plain`, etc.
-- Status Code: `200 OK`, `404 Not Found`
+* Request Method: `GET`
+* Resource URL: `/hello`
+* Content Type: `application/json`, `text/plain`
+* Status Codes: `200 OK`, `404 Not Found`
 
-## Hands-on 2: Hello World RESTful Web Service
+---
+
+# Hands-on 2: Hello World RESTful Web Service
 
 Created `HelloController` with a GET endpoint.
 
-Endpoint:
+### Endpoint
 
 ```text
 GET http://localhost:8083/hello
 ```
 
-Response:
+### Response
 
 ```text
 Hello World!!
 ```
 
-Class used:
+### Class Used
 
 ```text
 controller.com.cognizant.springlearn.HelloController
 ```
 
-Method used:
+### Method Used
 
 ```text
 sayHello()
 ```
 
-## Hands-on 3: REST Country Web Service
+### Postman Output
+
+![Hello API](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_2_1.png)
+
+---
+
+# Hands-on 3: REST Country Web Service
 
 Created `CountryController` and loaded India country details from `country.xml`.
 
-Endpoint:
+### Endpoint
 
 ```text
 GET http://localhost:8083/country
 ```
 
-Response:
+### Response
 
 ```json
 {
@@ -64,17 +92,23 @@ Response:
 }
 ```
 
-## Hands-on 4: REST Get All Countries
+### Postman Output
+
+![Country API](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_2_2.png)
+
+---
+
+# Hands-on 4: REST Get All Countries
 
 Created an endpoint to return all countries from XML configuration.
 
-Endpoint:
+### Endpoint
 
 ```text
 GET http://localhost:8083/countries
 ```
 
-Response:
+### Response
 
 ```json
 [
@@ -85,17 +119,25 @@ Response:
 ]
 ```
 
-## Hands-on 5: REST Get Country Based on Country Code
+### Postman Output
 
-Created a REST endpoint to get country details using country code. The country code matching is case-insensitive.
+![All Countries API](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_2_3.png)
 
-Endpoint:
+---
+
+# Hands-on 5: REST Get Country Based on Country Code
+
+Created a REST endpoint to get country details using country code.
+
+The country code matching is case-insensitive.
+
+### Endpoint
 
 ```text
 GET http://localhost:8083/country/in
 ```
 
-Response:
+### Response
 
 ```json
 {
@@ -110,47 +152,61 @@ Also supported:
 GET http://localhost:8083/countries/in
 ```
 
-## Hands-on 6: REST Country Exceptional Scenario
+### Postman Output
+
+![Country By Code API](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_2_4.png)
+
+---
+
+# Hands-on 6: REST Country Exceptional Scenario
 
 Created `CountryNotFoundException` for invalid country code.
 
-Endpoint:
+### Endpoint
 
 ```text
 GET http://localhost:8083/country/az
 ```
 
-Response status:
+### Response Status
 
 ```text
 404 Not Found
 ```
 
-Reason:
+### Reason
 
 ```text
 Country not found
 ```
 
-Exception class:
+### Exception Class
 
 ```text
 springlearn.service.exception.CountryNotFoundException
 ```
 
-## Hands-on 7: MockMvc Test Get Country Service
+### Postman Output
+
+![Country Exception API](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_2_5.png)
+
+---
+
+# Hands-on 7: MockMvc Test Get Country Service
 
 Created MockMvc test cases in `SpringLearnApplicationTests`.
 
 Tests included:
 
-- Check whether `CountryController` is loaded
-- Check whether `HelloController` is loaded
-- Test `/hello`
-- Test `/country`
-- Test `/countries`
-- Test `/country/in`
-- Test `/country/az` exceptional scenario
+* Check whether `CountryController` is loaded
+* Check whether `HelloController` is loaded
+* Test `/hello`
+* Test `/country`
+* Test `/countries`
+* Test `/country/in`
+* Test `/country/az` exceptional scenario
+
+---
 
 Application runs on:
 
@@ -158,23 +214,27 @@ Application runs on:
 http://localhost:8083
 ```
 
-## API List
+---
 
-| Method | URL | Description |
-|---|---|---|
-| GET | `/hello` | Returns Hello World text |
-| GET | `/country` | Returns India country details |
-| GET | `/countries` | Returns all countries |
-| GET | `/country/{code}` | Returns country by code |
-| GET | `/countries/{code}` | Returns country by code |
+# API List
 
-## Technologies Used
+| Method | URL                 | Description                   |
+| ------ | ------------------- | ----------------------------- |
+| GET    | `/hello`            | Returns Hello World text      |
+| GET    | `/country`          | Returns India country details |
+| GET    | `/countries`        | Returns all countries         |
+| GET    | `/country/{code}`   | Returns country by code       |
+| GET    | `/countries/{code}` | Returns country by code       |
 
-- Spring Boot 3
-- Spring Web
-- Lombok Builder Pattern
-- Lombok SLF4J Logger
-- XML Bean Configuration
-- REST Controller
-- Service Layer
-- MockMvc Testing
+---
+
+# Technologies Used
+
+* Spring Boot 3
+* Spring Web
+* Lombok Builder Pattern
+* Lombok SLF4J Logger
+* XML Bean Configuration
+* REST Controller
+* Service Layer
+* MockMvc Testing
