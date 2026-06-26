@@ -1,12 +1,14 @@
 # JWT Hands-on
 
-**Done by:** Rishabh Dubey  
-**Package:** `com.cognizant.springlearn`  
+Completed by: Rishabh Dubey
+**Package:** `com.cognizant.springlearn`
 **Application:** `jwt-spring-learn`
 
 This project implements the JWT authentication hands-on using Spring Boot 3, Spring Security, Lombok, Spring Web, DevTools, and JJWT.
 
-## Hands-on Covered
+---
+
+# Hands-on Covered
 
 1. Securing RESTful web services with Spring Security
 2. Creating users and roles in Spring Security
@@ -17,73 +19,202 @@ This project implements the JWT authentication hands-on using Spring Boot 3, Spr
 7. Authorizing API requests using JWT Bearer token
 8. Securing `/countries` API using JWT filter
 
-## Important Screenshot Paths
+---
 
-Place your screenshots in the `screenshots` folder using these names.
+# Screenshots
+
+## Project Structure
+
+![Project Structure](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_jwt_8.png)
+
+---
+
+## Spring Boot Startup
+
+![Application Startup](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_jwt_13.png)
+
+---
+
+## Access Protected API Without Authentication (401 Unauthorized)
+
+**GET**
 
 ```text
-screenshots/
-├── 01-project-structure.png
-├── 02-application-startup.png
-├── 03-basic-auth-unauthorized.png
-├── 04-basic-auth-user-success.png
-├── 05-basic-auth-admin-forbidden.png
-├── 06-authenticate-api-basic-auth.png
-├── 07-generated-jwt-token.png
-├── 08-jwt-token-decoded-jwt-io.png
-├── 09-bearer-token-countries-success.png
-├── 10-invalid-token-unauthorized.png
-├── 11-security-config-code.png
-├── 12-authentication-controller-code.png
-├── 13-jwt-authorization-filter-code.png
-└── 14-final-output.png
+http://localhost:8090/countries
 ```
 
-## Screenshots
+![Unauthorized](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_jwt_1.png)
 
-### Project Structure
-![Project Structure](screenshots/01-project-structure.png)
+---
 
-### Application Startup
-![Application Startup](screenshots/02-application-startup.png)
+## Access Countries using USER Credentials
 
-### Basic Auth Unauthorized
-![Basic Auth Unauthorized](screenshots/03-basic-auth-unauthorized.png)
+**GET**
 
-### Basic Auth USER Success
-![Basic Auth USER Success](screenshots/04-basic-auth-user-success.png)
+```text
+http://localhost:8090/countries
+```
 
-### Basic Auth ADMIN Forbidden
-![Basic Auth ADMIN Forbidden](screenshots/05-basic-auth-admin-forbidden.png)
+Authorization:
 
-### Authenticate API with Basic Auth
-![Authenticate API](screenshots/06-authenticate-api-basic-auth.png)
+```text
+Basic Auth
 
-### Generated JWT Token
-![Generated JWT Token](screenshots/07-generated-jwt-token.png)
+Username : user
+Password : pwd
+```
 
-### JWT Token Decoded on jwt.io
-![JWT Decoded](screenshots/08-jwt-token-decoded-jwt-io.png)
+![USER Access](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_jwt_2.png)
 
-### Countries API with Bearer Token
-![Bearer Token Success](screenshots/09-bearer-token-countries-success.png)
+---
 
-### Invalid Token Unauthorized
-![Invalid Token](screenshots/10-invalid-token-unauthorized.png)
+## Access Countries using ADMIN Credentials
 
-### SecurityConfig Code
-![SecurityConfig](screenshots/11-security-config-code.png)
+**GET**
 
-### AuthenticationController Code
-![AuthenticationController](screenshots/12-authentication-controller-code.png)
+```text
+http://localhost:8090/countries
+```
 
-### JwtAuthorizationFilter Code
-![JwtAuthorizationFilter](screenshots/13-jwt-authorization-filter-code.png)
+Authorization:
 
-### Final Output
-![Final Output](screenshots/14-final-output.png)
+```text
+Basic Auth
 
-## Run Application
+Username : admin
+Password : pwd
+```
+
+Expected:
+
+```text
+403 Forbidden
+```
+
+![ADMIN Forbidden](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_jwt_3.png)
+
+---
+
+## Generate JWT Token
+
+**GET**
+
+```text
+http://localhost:8090/authenticate
+```
+
+Authorization:
+
+```text
+Basic Auth
+
+Username : user
+Password : pwd
+```
+
+Expected Response
+
+```json
+{
+  "token": "GENERATED_JWT_TOKEN"
+}
+```
+
+![Generated JWT](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_jwt_4.png)
+
+---
+
+## Decode JWT Token using jwt.io
+
+Open:
+
+```text
+https://jwt.io
+```
+
+Paste the generated JWT token.
+
+![JWT Decoded](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_jwt_5.png)
+
+---
+
+## Access Countries using JWT Bearer Token
+
+**GET**
+
+```text
+http://localhost:8090/countries
+```
+
+Authorization:
+
+```text
+Bearer Token
+
+<Generated JWT Token>
+```
+
+![Bearer Token Success](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_jwt_6.png)
+
+---
+
+## Invalid JWT
+
+**GET**
+
+```text
+http://localhost:8090/countries
+```
+
+Authorization:
+
+```text
+Bearer Token
+
+invalid-token
+```
+
+Expected:
+
+```text
+401 Unauthorized
+```
+
+![Invalid JWT](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_jwt_7.png)
+
+---
+
+## SecurityConfig.java
+
+![SecurityConfig](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_jwt_9.png)
+
+---
+
+## AuthenticationController.java
+
+![AuthenticationController](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_jwt_10.png)
+
+---
+
+## JwtAuthorizationFilter.java
+
+![JwtAuthorizationFilter](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_jwt_11.png)
+
+---
+
+## JwtUtil.java
+
+![JwtUtil](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_jwt_12.png)
+
+---
+
+## Final Output
+
+![Final Output](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_3/postman_output/handson_jwt_14.png)
+
+---
+
+# Run Application
 
 ```bash
 mvn clean spring-boot:run
@@ -95,19 +226,23 @@ Application runs on:
 http://localhost:8090
 ```
 
-## Users
+---
 
-| Username | Password | Role |
-|---|---|---|
-| `user` | `pwd` | `USER` |
-| `admin` | `pwd` | `ADMIN` |
+# Users
 
-## Test APIs
+| Username | Password | Role    |
+| -------- | -------- | ------- |
+| `user`   | `pwd`    | `USER`  |
+| `admin`  | `pwd`    | `ADMIN` |
 
-### 1. Try Protected API Without Authentication
+---
 
-```bash
-curl -s http://localhost:8090/countries
+# Test APIs
+
+## 1. Try Protected API Without Authentication
+
+```http
+GET http://localhost:8090/countries
 ```
 
 Expected:
@@ -119,10 +254,21 @@ Expected:
 }
 ```
 
-### 2. Generate JWT Token
+---
 
-```bash
-curl -s -u user:pwd http://localhost:8090/authenticate
+## 2. Generate JWT Token
+
+```http
+GET http://localhost:8090/authenticate
+```
+
+Authorization:
+
+```text
+Basic Auth
+
+Username : user
+Password : pwd
 ```
 
 Expected:
@@ -133,10 +279,20 @@ Expected:
 }
 ```
 
-### 3. Access Countries API with JWT
+---
 
-```bash
-curl -s -H "Authorization: Bearer REPLACE_TOKEN_HERE" http://localhost:8090/countries
+## 3. Access Countries API with JWT
+
+```http
+GET http://localhost:8090/countries
+```
+
+Authorization:
+
+```text
+Bearer Token
+
+<Generated JWT Token>
 ```
 
 Expected:
@@ -162,10 +318,20 @@ Expected:
 ]
 ```
 
-### 4. Test Invalid JWT
+---
 
-```bash
-curl -s -H "Authorization: Bearer invalid-token" http://localhost:8090/countries
+## 4. Test Invalid JWT
+
+```http
+GET http://localhost:8090/countries
+```
+
+Authorization:
+
+```text
+Bearer Token
+
+invalid-token
 ```
 
 Expected:
@@ -175,49 +341,4 @@ Expected:
   "status": 401,
   "error": "Unauthorized"
 }
-```
-
-## Postman Testing
-
-### Generate Token
-
-Method:
-
-```text
-GET
-```
-
-URL:
-
-```text
-http://localhost:8090/authenticate
-```
-
-Authorization:
-
-```text
-Basic Auth
-Username: user
-Password: pwd
-```
-
-### Access Countries
-
-Method:
-
-```text
-GET
-```
-
-URL:
-
-```text
-http://localhost:8090/countries
-```
-
-Authorization:
-
-```text
-Bearer Token
-Token: paste generated JWT token
 ```
