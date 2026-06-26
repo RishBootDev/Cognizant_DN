@@ -1,4 +1,4 @@
-# 🚀 ORM Learn - Spring Data JPA Hands-on
+# Spring Data JPA Hands-on - 1
 
 A complete Spring Boot application implementing all the hands-on exercises from **Hands-on 1 to Hands-on 9** of the Spring Data JPA and Hibernate learning module.
 
@@ -21,7 +21,7 @@ This project demonstrates the implementation of **Spring Data JPA**, **Hibernate
 > 
 ---
 
-# 🛠 Database Setup
+#  Database Setup
 
 Create the database.
 
@@ -47,7 +47,7 @@ source src/main/resources/db/country-data.sql;
 
 ---
 
-# ⚙️ Application Configuration
+# Application Configuration
 
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/ormlearn
@@ -97,7 +97,7 @@ These annotations map the Java entity to the database table.
 
 ---
 
-# 📊 JPA vs Hibernate vs Spring Data JPA
+#  JPA vs Hibernate vs Spring Data JPA
 
 | JPA | Hibernate | Spring Data JPA |
 |------|-----------|-----------------|
@@ -107,7 +107,7 @@ These annotations map the Java entity to the database table.
 
 ---
 
-# ✨ Implemented Features
+#  Implemented Features
 
 ✔ Get All Countries
 
@@ -129,7 +129,7 @@ These annotations map the Java entity to the database table.
 
 ---
 
-# 📁 Main Source Files
+#  Main Source Files
 
 | File | Purpose |
 |------|----------|
