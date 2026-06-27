@@ -334,6 +334,7 @@ spring.jpa.properties.*
 ### Output
 
 ![Exercise 10](outputs/exercise_10_output.png)
+![Exercise 10](outputs/exercise_10_1output.png)
 
 ---
 

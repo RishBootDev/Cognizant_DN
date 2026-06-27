@@ -25,7 +25,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     
     List<Employee> findPermanentEmployees();
     List<Employee> findBySalaryGreaterThanNamed(@Param("salary") Double salary);
-
     @Query("SELECT e FROM Employee e WHERE LOWER(e.name) LIKE LOWER(CONCAT('%', :keyword, '%')) OR LOWER(e.email) LIKE LOWER(CONCAT('%', :keyword, '%'))")
     List<Employee> searchByNameOrEmail(@Param("keyword") String keyword);
 
