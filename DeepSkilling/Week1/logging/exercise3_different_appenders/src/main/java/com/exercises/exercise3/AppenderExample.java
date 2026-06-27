@@ -1,4 +1,4 @@
-package Cognizant_DN.DeepSkilling.Week1.logging.exercise3_different_appenders.src.main.java.com.exercises.exercise3;
+package com.exercises.exercise3;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
