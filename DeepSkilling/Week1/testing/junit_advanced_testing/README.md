@@ -112,7 +112,7 @@ Group multiple test classes into a single test suite for execution.
 
 ### Output Screenshot
 
-![Exercise 2 Output](testing/junit_advanced_testing/outputs/exercise2_output.png)
+![Exercise 2 Output](outputs/exercise2_output.png)
 
 ---
 
