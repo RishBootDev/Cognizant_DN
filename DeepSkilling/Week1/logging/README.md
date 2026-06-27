@@ -105,7 +105,7 @@ Demonstrate parameterized logging using placeholders.
 ---
 ### Output Screenshot
 
-![Exercise 2 Output](outputs/exercise2_output.png)
+![Exercise 2 Output](outputs/exercise3_output.png)
 
 ---
 
@@ -133,7 +133,7 @@ Configure Logback to log messages simultaneously to both the console and a log f
 ---
 ### Output Screenshot
 
-![Exercise 3 Output](outputs/exercise3_output.png)
+![Exercise 3 Output](outputs/exercise2_output.png)
 
 ---
 
