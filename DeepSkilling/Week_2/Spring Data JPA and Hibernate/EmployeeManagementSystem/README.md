@@ -65,6 +65,7 @@ H2 Database
 ### Output
 
 ![Exercise 1](outputs/exercise_1_output.png)
+![Exercise 1](outputs/_12_output.png)
 
 ---
 
@@ -157,6 +158,7 @@ JpaRepository<Department, Integer>
 ### Output
 
 ![Exercise 4](outputs/exercise_4_output.png)
+![Exercise 4](outputs/_13_output.png)
 
 ---
 
