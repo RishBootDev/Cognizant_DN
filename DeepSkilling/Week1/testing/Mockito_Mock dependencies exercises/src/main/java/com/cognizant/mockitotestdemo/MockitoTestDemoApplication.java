@@ -1,0 +1,12 @@
+package com.cognizant.mockitotestdemo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MockitoTestDemoApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(MockitoTestDemoApplication.class, args);
+    }
+}
