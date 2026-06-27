@@ -77,7 +77,7 @@ Demonstrate logging **Error** and **Warning** messages using SLF4J.
 ---
 ### Output Screenshot
 
-![Exercise 1 Output](logging/outputs/exercise1_output.png)
+![Exercise 1 Output](outputs/exercise1_output.png)
 
 ---
 
@@ -105,7 +105,7 @@ Demonstrate parameterized logging using placeholders.
 ---
 ### Output Screenshot
 
-![Exercise 2 Output](logging/outputs/exercise2_output.png)
+![Exercise 2 Output](outputs/exercise2_output.png)
 
 ---
 
@@ -133,7 +133,7 @@ Configure Logback to log messages simultaneously to both the console and a log f
 ---
 ### Output Screenshot
 
-![Exercise 3 Output](logging/outputs/exercise3_output.png)
+![Exercise 3 Output](outputs/exercise3_output.png)
 
 ---
 
