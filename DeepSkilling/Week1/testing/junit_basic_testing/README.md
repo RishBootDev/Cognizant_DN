@@ -58,7 +58,7 @@ Set up a Maven project with JUnit dependencies and create the first test class.
 
 ### Output Screenshot
 
-![Exercise 1 Output](testing/junit_basic_testing/outputs/exercise1_output.png)
+![Exercise 1 Output](testing/junit_basic_testing/outputs/exercise_1_output.png)
 
 ---
 
@@ -84,7 +84,7 @@ Write basic JUnit test cases for Java methods.
 
 ### Output Screenshot
 
-![Exercise 2 Output](testing/junit_basic_testing/outputs/exercise2_output.png)
+![Exercise 2 Output](testing/junit_basic_testing/outputs/exercise_2_output.png)
 
 ---
 
@@ -111,7 +111,7 @@ Validate application logic using different JUnit assertions.
 
 ### Output Screenshot
 
-![Exercise 3 Output](testing/junit_basic_testing/outputs/exercise3_output.png)
+![Exercise 3 Output](testing/junit_basic_testing/outputs/exercise_3_output.png)
 
 ---
 
@@ -138,7 +138,7 @@ Organize unit tests using the Arrange-Act-Assert pattern and implement setup and
 
 ### Output Screenshot
 
-![Exercise 4 Output](testing/junit_basic_testing/outputs/exercise4_output.png)
+![Exercise 4 Output](testing/junit_basic_testing/outputs/exercise_4_output.png)
 
 ---
 
