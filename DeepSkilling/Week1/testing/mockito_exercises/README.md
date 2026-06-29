@@ -17,7 +17,6 @@ This project demonstrates the practical usage of **Mockito** with **JUnit 5** fo
 * [Advanced Mockito Exercises](#advanced-mockito-exercises)
 * [Mockito Concepts Covered](#mockito-concepts-covered)
 * [Dependencies Used](#dependencies-used)
-* [Learning Outcomes](#learning-outcomes)
 * [Final Completion Status](#final-completion-status)
 
 ---
