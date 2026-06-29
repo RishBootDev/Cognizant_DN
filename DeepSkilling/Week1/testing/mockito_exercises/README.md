@@ -331,6 +331,11 @@ Test a service layer independently of the database by mocking the repository and
 * 🧪 **Test Code:** [src/test/java/com/mockito/advanced/exercise1](src/test/java/com/mockito/advanced/exercise1)
 
 ---
+### Output Screenshot
+
+![Exercise 1 Output](outputs/advanced/exercise1.png)
+
+---
 
 ## Exercise 2 – Mocking External REST Services
 
@@ -348,6 +353,11 @@ Mock REST client interactions to test service logic without invoking actual exte
 
 * 📂 **Main Code:** [src/main/java/com/mockito/advanced/exercise2](src/main/java/com/mockito/advanced/exercise2)
 * 🧪 **Test Code:** [src/test/java/com/mockito/advanced/exercise2](src/test/java/com/mockito/advanced/exercise2)
+
+---
+### Output Screenshot
+
+![Exercise 2 Output](outputs/advanced/exercise2.png)
 
 ---
 
@@ -370,6 +380,11 @@ Test file processing logic by mocking file reader and writer classes instead of 
 * 🧪 **Test Code:** [src/test/java/com/mockito/advanced/exercise3](src/test/java/com/mockito/advanced/exercise3)
 
 ---
+### Output Screenshot
+
+![Exercise 3 Output](outputs/advanced/exercise3.png)
+
+---
 
 ## Exercise 4 – Mocking Network Interactions
 
@@ -390,6 +405,11 @@ Simulate network communication by mocking network clients and verifying the comp
 * 🧪 **Test Code:** [src/test/java/com/mockito/advanced/exercise4](src/test/java/com/mockito/advanced/exercise4)
 
 ---
+### Output Screenshot
+
+![Exercise 4 Output](outputs/advanced/exercise4.png)
+
+---
 
 ## Exercise 5 – Mocking Multiple Return Values
 
@@ -408,6 +428,11 @@ Stub repository methods to return different values on consecutive invocations an
 
 * 📂 **Main Code:** [src/main/java/com/mockito/advanced/exercise5](src/main/java/com/mockito/advanced/exercise5)
 * 🧪 **Test Code:** [src/test/java/com/mockito/advanced/exercise5](src/test/java/com/mockito/advanced/exercise5)
+
+---
+### Output Screenshot
+
+![Exercise 5 Output](outputs/advanced/exercise5.png)
 
 ---
 
