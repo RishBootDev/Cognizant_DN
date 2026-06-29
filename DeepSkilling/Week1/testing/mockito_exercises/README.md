@@ -148,6 +148,11 @@ Create a mock object for an external dependency, stub its methods using Mockito,
 * 🧪 **Test Code:** [src/test/java/com/mockito/basic/exercise1](src/test/java/com/mockito/basic/exercise1)
 
 ---
+### Output Screenshot
+
+![Exercise 1 Output](outputs/basic/exercise1.png)
+
+---
 
 ## Exercise 2 – Verifying Interactions
 
@@ -165,6 +170,11 @@ Verify that methods on mocked dependencies are invoked correctly during the exec
 
 * 📂 **Main Code:** [src/main/java/com/mockito/basic/exercise2](src/main/java/com/mockito/basic/exercise2)
 * 🧪 **Test Code:** [src/test/java/com/mockito/basic/exercise2](src/test/java/com/mockito/basic/exercise2)
+
+---
+### Output Screenshot
+
+![Exercise 2 Output](outputs/basic/exercise2.png)
 
 ---
 
@@ -187,6 +197,11 @@ Verify interactions using Mockito's argument matchers instead of exact values.
 * 🧪 **Test Code:** [src/test/java/com/mockito/basic/exercise3](src/test/java/com/mockito/basic/exercise3)
 
 ---
+### Output Screenshot
+
+![Exercise 3 Output](outputs/basic/exercise3.png)
+
+---
 
 ## Exercise 4 – Handling Void Methods
 
@@ -206,6 +221,11 @@ Test methods that do not return any value using Mockito's support for stubbing a
 * 🧪 **Test Code:** [src/test/java/com/mockito/basic/exercise4](src/test/java/com/mockito/basic/exercise4)
 
 ---
+### Output Screenshot
+
+![Exercise 4 Output](outputs/basic/exercise4.png)
+
+---
 
 ## Exercise 5 – Mocking and Stubbing with Multiple Returns
 
@@ -223,6 +243,11 @@ Stub a mocked method to return different values on consecutive invocations.
 
 * 📂 **Main Code:** [src/main/java/com/mockito/basic/exercise5](src/main/java/com/mockito/basic/exercise5)
 * 🧪 **Test Code:** [src/test/java/com/mockito/basic/exercise5](src/test/java/com/mockito/basic/exercise5)
+
+---
+### Output Screenshot
+
+![Exercise 5 Output](outputs/basic/exercise5.png)
 
 ---
 
@@ -254,6 +279,12 @@ Generate Response
 * 🧪 **Test Code:** [src/test/java/com/mockito/basic/exercise6](src/test/java/com/mockito/basic/exercise6)
 
 ---
+### Output Screenshot
+
+![Exercise 6 Output](outputs/basic/exercise6.png)
+
+---
+
 ## Exercise 7 – Handling Void Methods with Exceptions
 
 ### Objective
@@ -271,6 +302,11 @@ Test void methods that throw exceptions and verify proper exception handling usi
 
 * 📂 **Main Code:** [src/main/java/com/mockito/basic/exercise7](src/main/java/com/mockito/basic/exercise7)
 * 🧪 **Test Code:** [src/test/java/com/mockito/basic/exercise7](src/test/java/com/mockito/basic/exercise7)
+
+---
+### Output Screenshot
+
+![Exercise 7 Output](outputs/basic/exercise7.png)
 
 ---
 
