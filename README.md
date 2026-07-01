@@ -1,6 +1,15 @@
 # Cognizant Digital Nurture (Java FSE) Solutions
 
-This repository contains my weekly assignment and exercise solutions as part of the Cognizant Digital Nurture Program - Java FSE.
+This repository contains my weekly assignment and exercise solutions as part of the Cognizant Digital Nurture Program 5.0 - Java FSE.
+
+## 👤 My Details
+
+- **Name:** Rishabh Dubey
+- **Email:** rishabhdubey1472004@gmail.com
+- **Superset ID:** 7809001
+- **College:** Lakshmi Narain College of Technology, Bhopal
+
+---
 
 ## Repository Structure
 
