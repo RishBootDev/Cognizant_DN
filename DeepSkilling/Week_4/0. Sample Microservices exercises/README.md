@@ -74,6 +74,7 @@ GET http://localhost:8081/auth/token?username=rishabh
 ```text
 GET http://localhost:8081/secure
 
+
 Authorization: Bearer <TOKEN>
 ```
 
