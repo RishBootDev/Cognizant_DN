@@ -48,7 +48,7 @@ centralized-auth-sso-exercises
 outputs/exercise1.png
 ```
 
-![Exercise 1](outputs/exercise1.png)
+![Exercise 1](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_4/0.%20Sample%20Microservices%20Load%20balancing%20exercises/outputs/exercise1.png)
 
 ---
 
@@ -88,7 +88,7 @@ Authorization: Bearer <TOKEN>
 outputs/exercise2.png
 ```
 
-![Exercise 2](outputs/exercise2.png)
+![Exercise 2](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_4/0.%20Sample%20Microservices%20Load%20balancing%20exercises/outputs/exercise2.png)
 
 ---
 
@@ -130,7 +130,7 @@ Authorization: Bearer <TOKEN>
 outputs/exercise3.png
 ```
 
-![Exercise 3](outputs/exercise3.png)
+![Exercise 3](https://raw.githubusercontent.com/RishBootDev/Cognizant_DN/main/DeepSkilling/Week_4/0.%20Sample%20Microservices%20Load%20balancing%20exercises/outputs/exercise3.png)
 
 ---
 
