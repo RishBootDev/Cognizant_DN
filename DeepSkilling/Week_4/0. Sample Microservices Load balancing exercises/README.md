@@ -220,9 +220,7 @@ curl http://localhost:8081/example/get
 
 ## Output Screenshot
 
-```markdown
 ![Exercise 1 Output](outputs/exercise1.png)
-```
 
 ---
 
@@ -305,9 +303,7 @@ Run the above command multiple times to observe requests distributed across diff
 
 ## Output Screenshot
 
-```markdown
 ![Exercise 2 Output](outputs/exercise2.png)
-```
 
 ---
 # Exercise 3 – Resilience Patterns in an API Gateway
@@ -426,9 +422,8 @@ curl http://localhost:8081/fallback/example
 
 ## Output Screenshot
 
-```markdown
 ![Exercise 3 Output](outputs/exercise3.png)
-```
+
 
 ---
 
