@@ -75,18 +75,6 @@ Eureka dashboard while starting everything up:
    **evicts** it from the registry, so callers stop being routed to a
    dead instance.
 
-## Further reading
-
-These are the two pages you pointed me to — worth a look for another
-perspective on Eureka/Spring Cloud service discovery alongside the
-diagrams above:
-- [InfoQ illustration](https://imgopt.infoq.com/fit-in/3000x4000/filters:quality(85)/filters:no_upscale()/articles/spring-cloud-azure/en/resources/spring-cloud-azure-1541139702005.jpg)
-- [Medium illustration](https://miro.medium.com/1*cTPRDoBveeNbz9QAi5XJJg.png)
-
-*(Linked rather than embedded — both are copyrighted illustrations
-from their original authors. The diagrams above are original, built
-specifically around this project's actual services and ports.)*
-
 ## Startup order (important!)
 ```bash
 # 1
