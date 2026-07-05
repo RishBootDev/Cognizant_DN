@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="https://www.svgrepo.com/show/354365/sonarqube.svg" alt="SonarQube Logo" width="180">
+  <span style="display:inline-block; background:#ffffff; padding:16px; border-radius:12px;">
+    <img src="https://www.svgrepo.com/show/354365/sonarqube.svg"
+         alt="SonarQube Logo"
+         width="180">
+  </span>
 </p>
 
 <h1 align="center">SonarQube</h1>
