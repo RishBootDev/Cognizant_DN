@@ -89,11 +89,6 @@ These approaches allow independent deployment while maintaining loose coupling b
 <p align="center">
 <img src="output/output1.png" width="950">
 </p>
-
----
-
-##  Execution Output
-
 <p align="center">
 <img src="output/exercise1.png" width="950">
 </p>
@@ -125,15 +120,23 @@ Instead of hardcoding service URLs, microservices register themselves with the E
 ## ️ Service Discovery Architecture
 
 <p align="center">
+<img src="output/exercise2.png" width="950">
+</p>
+
+---
+
+##  Eureka Running ans services registered
+
+<p align="center">
 <img src="output/output2.png" width="950">
 </p>
 
 ---
 
-##  Execution Output
+##  Configurations injected
 
 <p align="center">
-<img src="output/exercise2.png" width="950">
+<img src="output/output_2.png" width="950">
 </p>
 
 ---
@@ -172,15 +175,15 @@ This architecture simplifies client interaction and centralizes request processi
 ##  API Gateway Architecture
 
 <p align="center">
-<img src="output/output3.png" width="950">
+<img src="output/exercise3.png" width="950">
 </p>
 
 ---
 
-##  Execution Output
+##  Postman Output
 
 <p align="center">
-<img src="output/exercise3.png" width="950">
+<img src="output/output3.png" width="950">
 </p>
 
 ---
@@ -213,7 +216,7 @@ This pattern significantly improves the resilience and reliability of distribute
 ## ️ Circuit Breaker Flow
 
 <p align="center">
-<img src="output/output4.png" width="950">
+<img src="output/exercise4.png" width="950">
 </p>
 
 ---
@@ -221,7 +224,7 @@ This pattern significantly improves the resilience and reliability of distribute
 ##  Execution Output
 
 <p align="center">
-<img src="output/exercise4.png" width="950">
+<img src="output/output4.png" width="950">
 </p>
 
 ---
