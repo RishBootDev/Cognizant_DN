@@ -1,623 +1,231 @@
-<p align="center">
-  <span style="display:inline-block; background:#ffffff; padding:16px; border-radius:12px;">
-    <img src="https://www.svgrepo.com/show/354365/sonarqube.svg"
-         alt="SonarQube Logo"
-         width="180">
-  </span>
-</p>
+﻿# SonarQube Integration With Spring Boot
 
-<h1 align="center">SonarQube</h1>
+This project demonstrates a complete local SonarQube integration with a Spring Boot Maven application. The application is located in `SpringBootDemo` and uses JaCoCo for test coverage, Maven Sonar Scanner for analysis, and SonarQube Community Edition running locally on port `9000`.
 
-<p align="center">
-  <strong>Continuous Code Quality & Security Analysis Platform</strong>
-</p>
+## Project Structure
 
----
+```text
+sonarqube
+|-- README.md
+|-- images
+|-- notes
+|-- SpringBootDemo
+    |-- pom.xml
+    |-- sonar-project.properties
+    |-- src/main/java/com/cognizant/springbootdemo
+    |-- src/test/java/com/cognizant/springbootdemo
+```
 
-# Introduction
+## Application Overview
 
-SonarQube is an open-source platform that performs **continuous inspection of source code**.
+The Spring Boot sample application uses a car-purchase domain. It contains business logic for:
 
-It helps developers identify:
+- Creating a car purchase profile
+- Calculating down payment
+- Calculating loan amount
+- Calculating monthly EMI
+- Checking premium car eligibility
+- Recommending purchase type
+- Formatting purchase reference and budget messages
 
-* Bugs
-* Security vulnerabilities
-* Code smells
-* Duplicate code
-* Test coverage
-* Technical debt
+The test suite covers the main service logic, validation cases, parameterized scenarios, Spring context loading, and helper logic used for SonarQube analysis.
 
-before the software reaches production.
+## Step 1: Run SonarQube Locally
 
-It is widely used in enterprise software development and DevOps pipelines.
+SonarQube was started using Docker Desktop. The container exposes SonarQube on port `9000`.
 
----
+```powershell
+docker run -d --name sonarqube -p 9000:9000 sonarqube:lts-community
+```
 
-# What is SonarQube?
+Open SonarQube in the browser:
 
-SonarQube is a **Static Code Analysis Tool**.
+```text
+http://localhost:9000
+```
 
-It scans source code without executing it and generates a detailed quality report.
+Default login for local setup:
 
-The analysis helps developers write:
+```text
+Username: admin
+Password: admin
+```
 
-* Cleaner code
-* Secure code
-* Maintainable code
-* Reliable code
+After first login, SonarQube may ask you to change the password. In this app, the password used in the scanner command is `root`.
 
----
+![Docker SonarQube container running](images/02-docker-sonarqube-container-running.png)
 
-# Why SonarQube?
+## Step 2: Create A SonarQube Project
 
-Writing code that simply works is not enough.
+In SonarQube, create a project manually and use this project key:
 
-Modern applications must also be:
+```text
+SpringBootDemo
+```
 
-* Secure
-* Maintainable
-* Readable
-* Testable
-* Reliable
+![Create SonarQube project](images/01-create-sonarqube-project.png)
 
-SonarQube ensures these qualities are continuously monitored.
+## Step 3: Configure Maven For SonarQube And JaCoCo
 
----
+The Maven project includes the Sonar Maven plugin and JaCoCo plugin in `SpringBootDemo/pom.xml`.
 
-# Key Features
+Important Sonar properties:
 
-* Static Code Analysis
-* Security Analysis
-* Code Smell Detection
-* Bug Detection
-* Duplicate Code Detection
-* Test Coverage Reports
-* Technical Debt Estimation
-* Security Hotspot Detection
-* Branch Analysis
-* Pull Request Analysis
-* Quality Gates
-* Quality Profiles
-* CI/CD Integration
-* IDE Integration
+```xml
+<sonar.projectKey>SpringBootDemo</sonar.projectKey>
+<sonar.projectName>SpringBootDemo</sonar.projectName>
+<sonar.sources>src/main/java</sonar.sources>
+<sonar.tests>src/test/java</sonar.tests>
+<sonar.java.binaries>target/classes</sonar.java.binaries>
+<sonar.junit.reportPaths>target/surefire-reports</sonar.junit.reportPaths>
+<sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+<sonar.scm.exclusions.disabled>true</sonar.scm.exclusions.disabled>
+```
 
----
+The same configuration is also available in `SpringBootDemo/sonar-project.properties` for standalone scanner usage.
 
-# Why Companies Use SonarQube
+## Step 4: Run Tests And Generate Coverage
 
-Many large organizations integrate SonarQube into their development lifecycle because it:
+From the Spring Boot application folder:
 
-* Improves code quality
-* Reduces production bugs
-* Detects security risks early
-* Enforces coding standards
-* Reduces maintenance cost
-* Helps during code reviews
-* Automates quality checks
+```powershell
+cd D:\Cognizant\src\Cognizant_DN\DeepSkilling\Week_4\sonarqube\SpringBootDemo
+.\mvnw.cmd clean verify
+```
 
----
+This command:
 
-# Benefits
+- Compiles the application
+- Runs all JUnit tests
+- Generates JaCoCo coverage data
+- Creates the coverage XML file used by SonarQube
 
-* Better software quality
-* Faster code reviews
-* Early bug detection
-* Reduced technical debt
-* Increased maintainability
-* Improved developer productivity
-* Better team collaboration
-* Standardized coding practices
+JaCoCo XML report path:
 
----
+```text
+SpringBootDemo/target/site/jacoco/jacoco.xml
+```
 
-# SonarQube Architecture
+## Step 5: Run SonarQube Analysis
 
-A typical architecture consists of:
+`
+```powershell
+mvn clean verify sonar:sonar -Dsonar.projectKey=your-project-key -Dsonar.host.url=http://localhost:9000 -Dsonar.token=your-sonarqube-token
+```
 
-<p align="center">
-    <img src="images/one.png" width="900" alt="SonarQube Architecture"/>
-</p>
+Expected scanner output includes:
 
----
+```text
+BUILD SUCCESS
+ANALYSIS SUCCESSFUL
+7 files indexed
+```
 
-# Main Components
+![Maven Sonar analysis success](images/11-maven-sonar-analysis-success.png)
 
-## Sonar Scanner
+## Step 6: Initial Failed Quality Gate
 
-Responsible for scanning source code.
+During the learning demo, intentional bugs, code smells, security hotspots, and low coverage were introduced to understand how SonarQube reports problems.
 
-Examples:
+The project initially failed the quality gate because of:
 
-* Maven Scanner
-* Gradle Scanner
-* CLI Scanner
-* Jenkins Scanner
-* GitHub Actions
+- Bugs
+- Code smells
+- Security hotspots
+- Low coverage on new code
 
----
+![Project list quality gate failed](images/03-project-list-quality-gate-failed.png)
 
-## SonarQube Server
+![Project overview failed low coverage](images/04-project-overview-failed-low-coverage.png)
 
-Processes reports generated by the scanner.
+## Step 7: Review Issues In SonarQube
 
-Stores issues.
+SonarQube reported issues such as:
 
-Calculates metrics.
+- Reusing `Random` incorrectly
+- Comparing strings using `==`
+- Hardcoded password-like value
+- Unused fields
+- Empty code blocks
+- Duplicated literals
 
-Displays dashboards.
+![Project list after issue scan](images/05-project-list-after-issue-scan.png)
 
----
+![Bug issues detected](images/06-bug-issues-detected.png)
 
-## Database
+![Security hotspots detected](images/07-security-hotspots-detected.png)
 
-Stores:
+![Code tab file metrics before fix](images/08-code-tab-file-metrics-before-fix.png)
 
-* Projects
-* Metrics
-* Users
-* Analysis History
-* Rules
-* Quality Gates
+![Activity issue trend before fix](images/09-activity-issue-trend-before-fix.png)
 
----
+![All open issues before fix](images/10-all-open-issues-before-fix.png)
 
-## Web Dashboard
+## Step 8: Fix Bugs And Improve Coverage
 
-Provides a graphical interface to view:
+The intentional issues were fixed by:
 
-* Issues
-* Metrics
-* Reports
-* Trends
-* Coverage
+- Replacing `Random` with `SecureRandom`
+- Removing hardcoded password-like logic
+- Using `.equals()` for string comparison
+- Removing empty blocks
+- Removing unused fields and methods
+- Replacing console output with return values
+- Adding focused unit tests
+- Adding parameterized tests
+- Adding validation tests
+- Covering helper classes
 
----
+Final test result:
 
-# Supported Languages
+```text
+Tests run: 43
+Failures: 0
+Errors: 0
+```
 
-SonarQube supports many languages including:
+Final coverage reached approximately:
 
-* Java
-* Kotlin
-* Python
-* JavaScript
-* TypeScript
-* C
-* C++
-* C#
-* Go
-* PHP
-* Ruby
-* Scala
-* Swift
+```text
+93.8%
+```
 
-and many more.
+## Step 9: Final Passing Quality Gate
 
----
+After fixes and test coverage improvements, the SonarQube quality gate passed.
 
-# Static Code Analysis
+Final dashboard summary:
 
-Static analysis means analyzing code **without executing it**.
+- Bugs: 0
+- Vulnerabilities: 0
+- Quality Gate: Passed
+- Coverage: 93.8%
+- Duplications: 0.0%
+- Lines: 140
 
-It detects:
+![Project list quality gate passed](images/12-project-list-quality-gate-passed.png)
 
-* Logic problems
-* Bad coding practices
-* Security flaws
-* Maintainability issues
+![Project overview quality gate passed](images/13-project-overview-quality-gate-passed.png)
 
----
+![Activity quality gate passed](images/14-activity-quality-gate-passed.png)
 
-# Bugs
 
-A bug is code that may produce incorrect behavior.
+## Useful Commands
 
-Examples:
+Run tests and coverage:
 
-* Null pointer access
-* Infinite loops
-* Incorrect conditions
-* Dead code
+```powershell
+.\mvnw.cmd clean verify
+```
 
----
+Open SonarQube:
 
-# Code Smells
+```text
+http://localhost:9000/dashboard?id=SpringBootDemo
+```
 
-Code smells are not bugs.
+Open JaCoCo report:
 
-They indicate poor design.
-
-Examples:
-
-* Long methods
-* Duplicate logic
-* Large classes
-* Complex conditions
-* Deep nesting
-* Magic numbers
-
----
-
-# Vulnerabilities
-
-Security vulnerabilities are weaknesses that attackers may exploit.
-
-Examples:
-
-* SQL Injection
-* Cross Site Scripting
-* Hardcoded passwords
-* Weak cryptography
-* Command injection
-
----
-
-# Security Hotspots
-
-A hotspot is code requiring manual security review.
-
-It may not be a vulnerability but deserves attention.
-
-Examples:
-
-* File uploads
-* Cryptographic operations
-* Authentication logic
-
----
-
-# Technical Debt
-
-Technical debt measures future maintenance effort.
-
-Examples:
-
-* Poor naming
-* Duplicate code
-* Complex methods
-* Missing documentation
-
-SonarQube estimates how long it would take to fix these issues.
-
----
-
-# Code Coverage
-
-Coverage measures how much code is tested.
-
-Usually integrated using:
-
-* JaCoCo
-* Cobertura
-
-Higher coverage generally improves confidence in the code.
-
----
-
-# Duplicate Code
-
-SonarQube identifies repeated blocks of code.
-
-Benefits of reducing duplication:
-
-* Easier maintenance
-* Smaller codebase
-* Fewer bugs
-
----
-
-# Reliability Rating
-
-Measures bug severity.
-
-Ratings:
-
-* A
-* B
-* C
-* D
-* E
-
-A is the best.
-
----
-
-# Security Rating
-
-Measures vulnerability severity.
-
-Ratings:
-
-* A
-* B
-* C
-* D
-* E
-
----
-
-# Maintainability Rating
-
-Measures technical debt.
-
-Lower debt means higher maintainability.
-
----
-
-# Quality Gates
-
-A Quality Gate determines whether a project passes predefined quality criteria.
-
-Typical conditions include:
-
-* No new bugs
-* No critical vulnerabilities
-* Coverage above threshold
-* Duplicate code below threshold
-
----
-
-# Quality Profiles
-
-A Quality Profile defines which rules are applied during analysis.
-
-Different teams can maintain different profiles.
-
----
-
-# Rules
-
-SonarQube includes thousands of built-in rules.
-
-Example categories:
-
-* Naming conventions
-* Exception handling
-* Performance
-* Security
-* Concurrency
-* Collections
-* Object-oriented design
-
----
-
-# Metrics
-
-Common metrics include:
-
-* Lines of Code
-* Bugs
-* Vulnerabilities
-* Code Smells
-* Coverage
-* Duplications
-* Technical Debt
-* Complexity
-
----
-
-# Dashboard
-
-The dashboard displays:
-
-* Overall Quality Gate
-* Reliability
-* Security
-* Maintainability
-* Recent Issues
-* Historical Trends
-* Coverage Reports
-* Duplication Reports
-
----
-
-# Issue Severity
-
-SonarQube categorizes issues as:
-
-* Info
-* Minor
-* Major
-* Critical
-* Blocker
-
-Higher severity should be fixed first.
-
----
-
-# Continuous Integration
-
-SonarQube integrates with:
-
-* Jenkins
-* GitHub Actions
-* GitLab CI/CD
-* Azure DevOps
-* Bitbucket Pipelines
-
-Typical pipeline:
-
-<p align="center">
-  <img src="images/two.png" alt="SonarQube Pipeline" width="900">
-</p>
-
----
-
-# IDE Integration
-
-Developers can use SonarLint inside IDEs.
-
-Supported IDEs include:
-
-* IntelliJ IDEA
-* Eclipse
-* Visual Studio Code
-
-SonarLint provides instant feedback while coding.
-
----
-
-# Branch Analysis
-
-Developer Edition and above support branch analysis.
-
-This allows quality monitoring for feature branches separately.
-
----
-
-# Pull Request Analysis
-
-SonarQube can analyze pull requests before merging.
-
-It reports:
-
-* New bugs
-* New vulnerabilities
-* New code smells
-* Coverage changes
-
----
-
-# SonarScanner
-
-The scanner is responsible for:
-
-* Reading project files
-* Collecting metrics
-* Sending reports to SonarQube Server
-
-It supports:
-
-* Maven
-* Gradle
-* CLI
-* .NET
-* NPM
-
----
-
-# SonarQube Editions
-
-## Community Edition
-
-* Free
-* Open Source
-* Suitable for individuals and small teams
-
----
-
-## Developer Edition
-
-Adds:
-
-* Branch Analysis
-* Pull Request Analysis
-* More languages
-
----
-
-## Enterprise Edition
-
-Adds:
-
-* Portfolio management
-* Advanced governance
-* Reporting
-
----
-
-## Data Center Edition
-
-Designed for:
-
-* Large enterprises
-* High availability
-* Distributed deployments
-
----
-
-# Best Practices
-
-* Scan every commit.
-* Keep Quality Gates enabled.
-* Fix new issues before release.
-* Write unit tests.
-* Monitor technical debt.
-* Reduce duplicate code.
-* Review security hotspots regularly.
-* Use SonarLint while developing.
-* Integrate with CI/CD pipelines.
-* Update Quality Profiles periodically.
-
----
-
-# Common Questions
-
-### What is SonarQube?
-
-A platform for continuous code quality and security analysis.
-
----
-
-### Is SonarQube a testing tool?
-
-No.
-
-It performs static analysis.
-
----
-
-### Does SonarQube execute code?
-
-No.
-
-It analyzes source code without running it.
-
----
-
-### Difference between SonarQube and SonarLint?
-
-SonarQube:
-
-* Central server
-* Team collaboration
-* Dashboards
-* Historical reports
-
-SonarLint:
-
-* IDE plugin
-* Instant feedback
-* Local analysis
-
----
-
-### What is a Quality Gate?
-
-A set of conditions that determines whether code satisfies the organization's quality standards.
-
----
-
-### What is Technical Debt?
-
-The estimated effort required to fix maintainability issues in the codebase.
-
----
-
-### What is a Code Smell?
-
-A maintainability issue that indicates poor design but does not necessarily cause incorrect behavior.
-
----
-
-### What is Static Code Analysis?
-
-Analyzing source code without executing it to detect quality and security issues.
-
----
-
-### Why integrate SonarQube with CI/CD?
-
-To automatically verify code quality on every build and prevent low-quality code from being merged or deployed.
-
----
+```text
+SpringBootDemo/target/site/jacoco/index.html
+```
