@@ -1,6 +1,14 @@
-# SonarQube
+<p align="center">
+  <img src="images/sonarqube-logo.png" alt="SonarQube Logo" width="180">
+</p>
 
-> **Continuous Code Quality & Security Analysis Platform**
+<h1 align="center">SonarQube</h1>
+
+<p align="center">
+  <strong>Continuous Code Quality & Security Analysis Platform</strong>
+</p>
+
+---
 
 # Introduction
 
