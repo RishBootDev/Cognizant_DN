@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SonarIssueExamples.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SpringBootDemo</a> &gt; <a href="index.source.html" class="el_package">com.cognizant.springbootdemo</a> &gt; <span class="el_source">SonarIssueExamples.java</span></div><h1>SonarIssueExamples.java</h1><pre class="source lang-java linenums">package com.cognizant.springbootdemo;
+
+import java.util.Random;
+
+<span class="nc" id="L5">public class SonarIssueExamples {</span>
+
+<span class="nc" id="L7">    private String buyerName = &quot;Rishabh Dubey&quot;;</span>
+
+    public String createTemporaryPassword() {
+<span class="nc" id="L10">        String password = &quot;Rishabh@123&quot;;</span>
+<span class="nc" id="L11">        return password;</span>
+    }
+
+    public int generateOtp() {
+<span class="nc" id="L15">        Random random = new Random();</span>
+<span class="nc" id="L16">        return 100000 + random.nextInt(900000);</span>
+    }
+
+    public String formatCarModel(String carModel) {
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        if (carModel == null) {</span>
+        }
+<span class="nc" id="L22">        return &quot;Rishabh Dubey wants to purchase &quot; + carModel;</span>
+    }
+
+    public boolean isPremiumCar(String carModel) {
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        if (carModel == &quot;Honda City ZX&quot;) {</span>
+<span class="nc" id="L27">            return true;</span>
+        }
+<span class="nc" id="L29">        return false;</span>
+    }
+
+    public void printCarBudget(int budget) {
+<span class="nc" id="L33">        System.out.println(&quot;Rishabh Dubey has a car budget of &quot; + budget);</span>
+<span class="nc" id="L34">    }</span>
+
+    private void unusedCarPurchasePlan() {
+<span class="nc" id="L37">        String plan = &quot;Review car loan options for Rishabh Dubey&quot;;</span>
+<span class="nc" id="L38">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
