@@ -103,10 +103,45 @@ class CarPurchaseServiceTest {
         }
 
         @Test
+        void rejectsInvalidCarPriceForDownPayment() {
+            assertThatThrownBy(() -> carPurchaseService.calculateDownPayment(0, 20))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("Car price must be greater than zero");
+        }
+
+        @Test
         void rejectsNegativeDownPayment() {
             assertThatThrownBy(() -> carPurchaseService.calculateLoanAmount(1500000, -1))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("Down payment cannot be negative");
+        }
+
+        @Test
+        void rejectsInvalidCarPriceForLoanAmount() {
+            assertThatThrownBy(() -> carPurchaseService.calculateLoanAmount(0, 100000))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("Car price must be greater than zero");
+        }
+
+        @Test
+        void rejectsInvalidLoanAmountForEmi() {
+            assertThatThrownBy(() -> carPurchaseService.calculateMonthlyEmi(0, 9.5, 60))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("Loan amount must be greater than zero");
+        }
+
+        @Test
+        void rejectsNegativeInterestRateForEmi() {
+            assertThatThrownBy(() -> carPurchaseService.calculateMonthlyEmi(1200000, -1, 60))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("Annual interest rate cannot be negative");
+        }
+
+        @Test
+        void rejectsInvalidTenureForEmi() {
+            assertThatThrownBy(() -> carPurchaseService.calculateMonthlyEmi(1200000, 9.5, 0))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("Tenure must be greater than zero");
         }
 
         @Test
@@ -125,6 +160,49 @@ class CarPurchaseServiceTest {
             assertThatThrownBy(() -> carPurchaseService.recommendPurchaseType(profile, 1500000))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("Car model is required");
+        }
+
+        @Test
+        void rejectsNullProfile() {
+            assertThatThrownBy(() -> carPurchaseService.createPurchaseSummary(null))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("Profile is required");
+        }
+
+        @Test
+        void rejectsBlankBuyerName() {
+            CarPurchaseProfile profile = new CarPurchaseProfile(" ", "Honda City ZX", 1500000, 760);
+
+            assertThatThrownBy(() -> carPurchaseService.createPurchaseSummary(profile))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("Buyer name is required");
+        }
+
+        @Test
+        void rejectsNegativeBudget() {
+            CarPurchaseProfile profile = new CarPurchaseProfile("Rishabh Dubey", "Honda City ZX", -1, 760);
+
+            assertThatThrownBy(() -> carPurchaseService.createPurchaseSummary(profile))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("Budget cannot be negative");
+        }
+
+        @Test
+        void rejectsInvalidCarPriceForEligibility() {
+            CarPurchaseProfile profile = new CarPurchaseProfile("Rishabh Dubey", "Honda City ZX", 1500000, 760);
+
+            assertThatThrownBy(() -> carPurchaseService.isEligibleForPremiumCar(profile, 0))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("Car price must be greater than zero");
+        }
+
+        @Test
+        void rejectsInvalidCarPriceForRecommendation() {
+            CarPurchaseProfile profile = new CarPurchaseProfile("Rishabh Dubey", "Honda City ZX", 1500000, 760);
+
+            assertThatThrownBy(() -> carPurchaseService.recommendPurchaseType(profile, 0))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("Car price must be greater than zero");
         }
     }
 }

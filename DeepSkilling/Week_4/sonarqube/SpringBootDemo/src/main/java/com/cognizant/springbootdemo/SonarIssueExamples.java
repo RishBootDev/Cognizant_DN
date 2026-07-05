@@ -1,39 +1,42 @@
 package com.cognizant.springbootdemo;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 public class SonarIssueExamples {
 
-    private String buyerName = "Rishabh Dubey";
+    private static final int MIN_REFERENCE_NUMBER = 100000;
+    private static final int REFERENCE_NUMBER_RANGE = 900000;
 
-    public String createTemporaryPassword() {
-        String password = "Rishabh@123";
-        return password;
+    private final String buyerName;
+    private final SecureRandom secureRandom;
+
+    public SonarIssueExamples() {
+        this("Rishabh Dubey", new SecureRandom());
     }
 
-    public int generateOtp() {
-        Random random = new Random();
-        return 100000 + random.nextInt(900000);
+    SonarIssueExamples(String buyerName, SecureRandom secureRandom) {
+        this.buyerName = buyerName;
+        this.secureRandom = secureRandom;
+    }
+
+    public String createPurchaseReference() {
+        int referenceNumber = MIN_REFERENCE_NUMBER + secureRandom.nextInt(REFERENCE_NUMBER_RANGE);
+        return "CAR-" + referenceNumber;
     }
 
     public String formatCarModel(String carModel) {
-        if (carModel == null) {
-        }
-        return "Rishabh Dubey wants to purchase " + carModel;
+        String selectedCarModel = carModel == null || carModel.isBlank() ? "a new car" : carModel.strip();
+        return buyerName + " wants to purchase " + selectedCarModel;
     }
 
     public boolean isPremiumCar(String carModel) {
-        if (carModel == "Honda City ZX") {
-            return true;
+        return "Honda City ZX".equals(carModel);
+    }
+
+    public String createBudgetMessage(int budget) {
+        if (budget <= 0) {
+            return buyerName + " has not set a car budget";
         }
-        return false;
-    }
-
-    public void printCarBudget(int budget) {
-        System.out.println("Rishabh Dubey has a car budget of " + budget);
-    }
-
-    private void unusedCarPurchasePlan() {
-        String plan = "Review car loan options for Rishabh Dubey";
+        return buyerName + " has a car budget of " + budget;
     }
 }
