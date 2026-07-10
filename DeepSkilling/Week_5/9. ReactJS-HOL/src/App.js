@@ -8,7 +8,6 @@ function App() {
   if (flag) {
     return <ListofPlayers />;
   }
-
   return <IndianPlayers />;
 }
 
