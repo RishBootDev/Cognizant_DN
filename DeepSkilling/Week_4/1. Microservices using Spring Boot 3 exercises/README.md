@@ -125,7 +125,7 @@ Instead of hardcoding service URLs, microservices register themselves with the E
 
 ---
 
-##  Eureka Running ans services registered
+##  Eureka Running and services registered
 
 <p align="center">
 <img src="output/output2.png" width="950">

@@ -3,4 +3,4 @@
 This folder contains my solutions for the Cognizant Digital Nurture (Java FSE) Week 5 assignments.
 
 ## Topics Covered:
-* Angular / React Fundamentals (Component lifecycle, state management, and UI building)
+*  React Fundamentals (Component lifecycle, state management, and UI building)

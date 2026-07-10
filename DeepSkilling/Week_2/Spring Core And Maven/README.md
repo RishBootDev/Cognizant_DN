@@ -4,7 +4,7 @@
 
 **Application Name:** `LibraryManagement`
 
-**Package Name:** `com.cognizant.rishbootdev.librarymanagementsystem`
+**Package Name:** `com.rishbootdev.librarymanagementsystem`
 
 This project demonstrates the fundamentals of the Spring Framework, including Spring Core, Dependency Injection (IoC), Spring AOP, XML Configuration, Annotation-based Configuration, Constructor & Setter Injection, Maven configuration, and a basic Spring Boot application. All exercises from the hands-on document have been implemented.
 

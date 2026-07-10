@@ -4,13 +4,6 @@ Completed by Rishabh Dubey.
 
 This Spring Boot 3 application contains all hands-on-1 exercises from the Spring REST hands-on document - 1.
 
-## Project Details
-```text
-Group Id: com.cognizant
-Artifact Id: spring-rest-handson-1
-Main Class: com.cognizant.com.cognizant.springlearn.SpringLearnApplication
-```
-
 ## Hands-on Covered
 
 ### Hands on 1: Create Spring Web Project using Maven

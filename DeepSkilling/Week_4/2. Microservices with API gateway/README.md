@@ -33,7 +33,7 @@ Microservices architecture divides a large application into multiple small, inde
 
 | Item | Value |
 |------|-------|
-| Base Package | `com.cognizant.eureka` |
+| Base Package | `com.cognizant` |
 | Java Version | 21 |
 | Spring Boot | 3 |
 | Database | MySQL |

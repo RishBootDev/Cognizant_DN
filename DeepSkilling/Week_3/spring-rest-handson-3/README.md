@@ -2,12 +2,7 @@
 
 **Completed by:** Rishabh Dubey
 
-**Application name:** `spring-rest-handson-3`
-
-**Package name:** `springlearn`
-
 ---
-
 # Objective
 
 This project demonstrates integration of RESTful Web Services of type GET and testing the services using Postman. It follows the Controller → Service → DAO architecture.

@@ -1,6 +1,6 @@
 # Exercise 4 – Resilient Microservices with Circuit Breaker
 
-One Spring Boot application demonstrating the Circuit Breaker pattern
+Spring Boot application demonstrating the Circuit Breaker pattern
 with Resilience4j.
 
 | Service            | Port | Role                                                        |
