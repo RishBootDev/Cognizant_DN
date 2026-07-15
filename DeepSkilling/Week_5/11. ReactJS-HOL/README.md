@@ -13,10 +13,6 @@ npx create-react-app eventexamplesapp
 
 ## Browser Output
 
-Place only browser output screenshots in the `output` folder.
-
-You need to place 4 screenshots:
-
 `output/output1.png`
 
 ![Increment Button Browser Output](output/output1.png)
